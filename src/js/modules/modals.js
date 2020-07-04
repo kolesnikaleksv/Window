@@ -13,16 +13,14 @@ const modals = () => {
                 if(e.target) {
                     e.preventDefault();
                 }
-                if (e.target.value != '') {
-                    windows.forEach(item => {
-                        item.style.display = "none";
-                    });
-                    console.log('lf');
-                    modal.style.display = "block";
-                    document.body.style.overflow = "hidden"; // freeze everything under the modal window
-                    // document.body.classList.add('modal-open'); // connect bootstrap classes
-                } 
                 
+                windows.forEach(item => {
+                    item.style.display = "none";
+                });
+                console.log('lf');
+                modal.style.display = "block";
+                document.body.style.overflow = "hidden"; // freeze everything under the modal window
+                // document.body.classList.add('modal-open'); // connect bootstrap classes
             });
         });
 
