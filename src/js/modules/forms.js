@@ -1,14 +1,11 @@
-const forms = () => {
-    const form = document.querySelectorAll('form'),
-          inputs = document.querySelectorAll('input'),
-          phoneInputs = document.querySelectorAll('input[name="user_phone"]');
+import checkNumInputs from './checkNumInputs';
 
-    phoneInputs.forEach(item => {
-        item.addEventListener('input', () => {
-            item.value = item.value.replace(/\D/, '');
-            
-        });
-    });
+const forms = (state) => {
+    const form = document.querySelectorAll('form'),
+          inputs = document.querySelectorAll('input');
+
+
+    checkNumInputs('input[name="user_phone"]');
 
     const message = {
         loading: 'Загрузка...',   //prescribe the path to the spinner
@@ -42,6 +39,11 @@ const forms = () => {
             
 
             const formData = new FormData(item);
+            if (item.getAttribute('data-calc') === "end") {
+                for (let key in state) {
+                    formData.append(key, state[key]);
+                }
+            }
 
             //const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
